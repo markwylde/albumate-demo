@@ -1,0 +1,32 @@
+<div class="container">
+
+    <flka-header-bar selected="flickrList"></flka-header-bar>
+
+    <div class="loading" ng-show="entries.length == 0">
+        <img src="assets/img/ajax-loader.gif" /> Loading list of artists...
+    </div>
+
+    <div ng-hide="entries.length == 0">
+        <div ng-repeat="entry in entries.items">
+
+            <artist-list-entry song-title="{{entry.songTitle}}"
+                                   artist="{{entry.artist}}"
+                                     time="{{entry.time}}"
+                                    album="{{entry.album}}"></artist-list-entry>
+
+        </div>
+
+    </div>
+
+    <pagination boundary-links="true"
+                   total-items="entries.totalItems"
+                items-per-page="entries.itemsPerPage"
+                      ng-model="entries.pageNumber"
+                     ng-change="refresh()"
+                         class="pagination-sm"
+                 previous-text="&lsaquo;"
+                     next-text="&rsaquo;"
+                    first-text="&laquo;"
+                     last-text="&raquo;"></pagination>
+
+</div>
