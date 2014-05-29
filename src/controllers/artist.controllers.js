@@ -20,15 +20,3 @@ angular.module('albumateApp')
         $scope.refresh();
 
     }])
-
-    .controller('ArtistViewCtrl', ['$scope', '$routeParams', 'dataAPI', function($scope, $routeParams, dataAPI) {
-
-        $scope.refresh = function() {
-            dataAPI.search().then( function(data) {
-                $scope.entry = data.items[$routeParams.index];
-            });
-        };
-
-        $scope.refresh();
-
-    }]);

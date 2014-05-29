@@ -2,7 +2,7 @@
 
 angular.module('albumateApp')
 
-.directive('flkaHeaderBar', function() {
+.directive('albuHeaderBar', function() {
     return {
         restrict: 'E',
         scope: {
