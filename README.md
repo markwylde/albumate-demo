@@ -18,6 +18,7 @@ It shows off the following technologies:
  - Jasmine Unit Testing
  - Karma test runner
  - Grunt task runner
+ - Protractor end to end testing
 
 This application aims to show you how to build an AngularJS application from scratch in a structured way.
 
