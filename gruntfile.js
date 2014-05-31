@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                     {expand: true, cwd: 'src/', src: ['data/**'], dest: 'dist/'},
                     {expand: true, cwd: 'src/', src: ['libraries/**'], dest: 'dist/'},
                     {expand: true, cwd: 'src/', src: ['views/**'], dest: 'dist/'},
-                    {expand: true, cwd: 'src/', src: ['assets/img/**'], dest: 'dist/'},
+                    {expand: true, cwd: 'src/', src: ['assets/img/**'], dest: 'dist/'}
                 ]
             }
         },
@@ -65,6 +65,6 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'concat', 'cssmin', 'copy', 'watch']);
-    grunt.registerTask('test', ['karma:travis'])
+    grunt.registerTask('test', ['karma:travis']);
 
 };
