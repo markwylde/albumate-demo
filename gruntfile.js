@@ -10,10 +10,19 @@ module.exports = function (grunt) {
                 browsers: ['PhantomJS']
             }
         },
-        uglify: {
+        protractor: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                configFile: "node_modules/protractor/referenceConf.js",
+                keepAlive: true,
+                noColor: false
             },
+            e2e: {
+                options: {
+                    configFile: "test/protractor.conf.js"
+                }
+            }
+        },
+        uglify: {
             build: {
                 src: ['src/**/*.js', 'src/*.js', '!src/libraries/**/*.js'],
                 dest: 'dist/assets/app.min.js'
@@ -24,7 +33,8 @@ module.exports = function (grunt) {
                 src: ['dist/assets/app.min.js'],
                 dest: 'dist/assets/app.min.js',
                 options: {
-                    banner: ";(function( window, undefined ){ \n 'use strict';",
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n' +
+                            ';(function( window, undefined ){ \n "use strict";',
                     footer: "}( window ));"
                 }
             }
@@ -62,9 +72,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-selenium-webdriver-phantom');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'concat', 'cssmin', 'copy', 'watch']);
-    grunt.registerTask('test', ['karma:travis']);
+    grunt.registerTask('default', ['uglify', 'concat', 'cssmin', 'copy', 'karma:travis', 'protractor']);
+    grunt.registerTask('watch', ['uglify', 'concat', 'cssmin', 'copy', 'watch']);
+    grunt.registerTask('test', ['karma:travis', 'protractor:e2e']);
 
 };

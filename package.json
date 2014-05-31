@@ -20,9 +20,14 @@
     "karma-chrome-launcher": "0.1.4",
     "karma-jasmine": "0.1.5",
     "karma-ng-scenario": "0.1.0",
-    "karma-phantomjs-launcher": "~0.1.4"
+    "karma-phantomjs-launcher": "~0.1.4",
+    "grunt-protractor-runner": "~1.0.0",
+    "grunt-selenium-webdriver-phantom": "~1.0.4",
+    "protractor": "~0.23.1",
+    "chromedriver": "~2.10.0"
   },
   "scripts": {
+    "install": "./node_modules/protractor/bin/webdriver-manager update",
     "test": "grunt test"
   }
 }
