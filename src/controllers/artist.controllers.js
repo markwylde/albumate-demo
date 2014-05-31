@@ -1,8 +1,6 @@
-'use strict';
-
 angular.module('albumateApp')
 
-    .controller('ArtistListCtrl', ['$scope', 'dataAPI', function($scope, dataAPI) {
+    .controller('ArtistListCtrl', ['$scope', 'dataAPI', function ($scope, dataAPI) {
 
         $scope.entries = {
             items: [],
@@ -11,12 +9,12 @@ angular.module('albumateApp')
             itemsPerPage: 5
         };
 
-        $scope.refresh = function() {
-            dataAPI.search($scope.entries.pageNumber, $scope.entries.itemsPerPage).then( function(data) {
+        $scope.refresh = function () {
+            dataAPI.search($scope.entries.pageNumber, $scope.entries.itemsPerPage).then(function (data) {
                 $scope.entries = data;
             });
         };
 
         $scope.refresh();
 
-    }])
+    }]);

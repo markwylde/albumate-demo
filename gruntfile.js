@@ -19,6 +19,16 @@ module.exports = function(grunt) {
                 dest: 'dist/assets/app.min.js'
             }
         },
+        concat: {
+            dist: {
+                src: ['dist/assets/app.min.js'],
+                dest: 'dist/assets/app.min.js',
+                options: {
+                    banner: ";(function( window, undefined ){ \n 'use strict';",
+                    footer: "}( window ));"
+                }
+            }
+        },
         cssmin: {
             add_banner: {
                 options: {
@@ -50,10 +60,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'cssmin', 'copy', 'watch']);
+    grunt.registerTask('default', ['uglify', 'concat', 'cssmin', 'copy', 'watch']);
     grunt.registerTask('test', ['karma:travis'])
 
 };

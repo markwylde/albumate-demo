@@ -1,32 +1,33 @@
-'use strict';
-
 angular.module('albumateApp')
 
-.factory('dataAPI', ['$q', '$http', 'dataURL', function($q, $http, dataURL) {
-    return new function() {
+    .factory('dataAPI', ['$q', '$http', 'dataURL', function ($q, $http, dataURL) {
 
-        this.search = function(pageNumber, itemsPerPage) {
-            var deferred = $q.defer();
+        var DataAPI = function () {
 
-            $http.get(dataURL).
-                success(function(data, status, headers, config) {
+            this.search = function (pageNumber, itemsPerPage) {
+                var deferred = $q.defer();
 
-                    var entry = {
-                        items: data.slice( (pageNumber * itemsPerPage) - itemsPerPage, pageNumber * itemsPerPage),
-                        totalItems: data.length,
-                        pageNumber: pageNumber,
-                        itemsPerPage: itemsPerPage
-                    };
+                $http.get(dataURL).
+                    success(function (data) {
 
-                    deferred.resolve(entry);
-                }).
-                error(function(data, status, headers, config) {
-                    console.log(status);
-                    deferred.reject([data,status,headers,config]);
-                });
+                        var entry = {
+                            items: data.slice((pageNumber * itemsPerPage) - itemsPerPage, pageNumber * itemsPerPage),
+                            totalItems: data.length,
+                            pageNumber: pageNumber,
+                            itemsPerPage: itemsPerPage
+                        };
 
-            return deferred.promise;
-        }
+                        deferred.resolve(entry);
+                    }).
+                    error(function (data, status, headers, config) {
+                        console.log(status);
+                        deferred.reject([data, status, headers, config]);
+                    });
 
-    };
-}]);
+                return deferred.promise;
+            };
+
+        };
+
+        return new DataAPI();
+    }]);
