@@ -1,7 +1,7 @@
 ### Albumate ###
 The builds for this project are tested using travis:
 
-![alt tag](https://travis-ci.org/markwylde/Albumate-Demo.svg?branch=master)
+[![Travis Test Result](https://travis-ci.org/markwylde/Albumate-Demo.svg?branch=master)](https://travis-ci.org/markwylde/Albumate-Demo)
 
 #### What is Albumate ####
 Albumate is a demo web application to show how to create an AngularJS application.
