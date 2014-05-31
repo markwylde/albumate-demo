@@ -78,6 +78,6 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'concat', 'cssmin', 'copy', 'karma:travis', 'protractor']);
     grunt.registerTask('watch', ['uglify', 'concat', 'cssmin', 'copy', 'watch']);
-    grunt.registerTask('test', ['karma:travis', 'protractor']);
+    grunt.registerTask('test', ['karma:travis']);
 
 };
