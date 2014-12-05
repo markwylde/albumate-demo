@@ -24,7 +24,7 @@ This application aims to show you how to build an AngularJS application from scr
 
 #### Live Demo ####
 Please make sure to check out the live demo on my website below, which is a working copy of the dist folder.
-http://www.markwylde.co.uk/albumate/#/
+-- DEMO is currently offline due to a server migration
 
 #### License ####
 Feel free to use this however you wish.
